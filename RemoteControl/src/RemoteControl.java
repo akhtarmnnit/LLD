@@ -17,18 +17,20 @@ public class RemoteControl {
     {
         isSystemOn=false;
         buttonMap=new HashMap<>();
+        prepare();
     }
     void prepare()
     {
         buttonMap.put(ButtonType.CHANNEL_BUTTON,new ChannelButton());
+        buttonMap.put(ButtonType.MIC_BUTTON,new MicButton());
+        buttonMap.put(ButtonType.MUTE_BUTTON,new MuteButton());
+        buttonMap.put(ButtonType.OK_BUTTON,new OKButton());
+        buttonMap.put(ButtonType.POWER_BUTTON,new PowerButton());
+        buttonMap.put(ButtonType.NAVIGATOR_BUTTON,new NavigatorButton());
     }
     void pressPowerButton()
     {
-        isSystemOn=!isSystemOn;
-        if(isSystemOn==true)
-            System.out.println("System PoweredOn");
-        else
-            System.out.println("System PoweredOff");
+        
     }
     void increaseVolumeButton()
     {
@@ -40,6 +42,18 @@ public class RemoteControl {
     }
     void pressMute()
     {
+
+    }
+    void displayRemote()
+    {
+        for(ButtonType buttonType: buttonMap.keySet())
+        {
+            System.out.println(buttonType.toString());
+        }
+    }
+
+    public void pressButton(String input) {
+        Button button = buttonMap.get(input);
 
     }
 }
